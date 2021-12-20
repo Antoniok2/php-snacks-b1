@@ -40,6 +40,7 @@
     $mail = $_GET["mail"];
     $age = $_GET["age"];
 
+
     $es3 = "SNACK 3";
     $posts = [
 
@@ -80,6 +81,8 @@
             ]
         ],
     ];
+
+    $es4 = "SNACK 4";
     
 ?>
 
@@ -132,6 +135,23 @@ Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
         ?>
     </h3>
 </div>
+
+<!-- Snack 4 -->
+<!-- Creare un array con 15 numeri casuali, tenendo conto che l'array non dovrà contenere lo stesso numero più di una volta -->
+<div>
+    <h1><?php echo $es4; ?></h1>
+    <span><?php echo $span; ?></span>
+    <div>
+        <?php
+            $arrNum = [];
+            for($i=0;$i<15;$i++) {
+                $arrNum[] = rand(1,100);
+            }
+            var_dump($arrNum);
+        ?>
+    </div>
+</div>
+
 
 </body>
 </html>
