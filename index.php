@@ -18,6 +18,7 @@
 </style>
 
 <?php
+    // ESERCIZIO 1
     $es1 = "SNACK1";
     $span = "Svolgimento esercizio";
     $matchs = [
@@ -35,15 +36,15 @@
         ]
     ];
 
+    // ESERCIZIO 2
     $es2 = "SNACK 2";
     $name = $_GET["name"];
     $mail = $_GET["mail"];
     $age = $_GET["age"];
 
-
+    // ESERCIZIO 3
     $es3 = "SNACK 3";
     $posts = [
-
         '10/01/2019' => [
             [
                 'title' => 'Post 1',
@@ -82,6 +83,7 @@
         ],
     ];
 
+    // ESERCIZIO 4
     $es4 = "SNACK 4";
     
 ?>
@@ -128,7 +130,10 @@ Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
             $keys = array_keys($posts);
             for($i=0; $i<count($keys); $i++) {
                 $key = $keys[$i];
-                $value = $posts[$key];
+                $postsByKey = $posts[$key];
+                // ciclo for su postsByKey
+                // $posts[$key][indice]['proprieta']
+                // $postsByKey[indice]['proprietà'];
 
                 echo $key . ":" . $value . "<br>";
             }
@@ -146,6 +151,9 @@ Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
             $arrNum = [];
             for($i=0;$i<15;$i++) {
                 $arrNum[] = rand(1,100);
+            }
+            for($i=0;$i<count($arrNum);$i++){
+                echo "<li>" . $arrNum[$i] . "</li>";
             }
             var_dump($arrNum);
         ?>
