@@ -16,12 +16,10 @@
         margin-bottom: 20px
     }
 </style>
-<!-- Snack 1 -->
-<!-- Creiamo un array contenente le partite di basket di un'ipotetica tappa del calendario. Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite. Stampiamo a schermo tutte le partite con questo schema.
-Olimpia Milano - Cantù | 55-60 -->
+
 <?php
     $es1 = "SNACK1";
-    $span1 = "Svolgimento esercizio";
+    $span = "Svolgimento esercizio";
     $matchs = [
         [
             'home' => 'Juventus',
@@ -38,15 +36,59 @@ Olimpia Milano - Cantù | 55-60 -->
     ];
 
     $es2 = "SNACK 2";
-    $span2 = "Svolgimento esercizio";
     $name = $_GET["name"];
     $mail = $_GET["mail"];
     $age = $_GET["age"];
+
+    $es3 = "SNACK 3";
+    $posts = [
+
+        '10/01/2019' => [
+            [
+                'title' => 'Post 1',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 1'
+            ],
+            [
+                'title' => 'Post 2',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 2'
+            ],
+        ],
+        '10/02/2019' => [
+            [
+                'title' => 'Post 3',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 3'
+            ]
+        ],
+        '15/05/2019' => [
+            [
+                'title' => 'Post 4',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 4'
+            ],
+            [
+                'title' => 'Post 5',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 5'
+            ],
+            [
+                'title' => 'Post 6',
+                'author' => 'Michele Papagni',
+                'text' => 'Testo post 6'
+            ]
+        ],
+    ];
     
 ?>
+
+<!-- Snack 1 -->
+<!-- Creiamo un array contenente le partite di basket di un'ipotetica tappa del calendario. Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite. Stampiamo a schermo tutte le partite con questo schema.
+Olimpia Milano - Cantù | 55-60 -->
 <div>
     <h1> <?php echo $es1; ?> </h1>
-    <span> <?php echo $span1; ?> </span> <br><br>
+    <span> <?php echo $span; ?> </span> <br><br>
     <?php
         // var_dump($matchs);
         for($i=0;$i<count($matchs); $i++) {
@@ -58,11 +100,9 @@ Olimpia Milano - Cantù | 55-60 -->
 
 <!-- Snack 2 -->
 <!-- Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" -->
-
-
 <div>
     <h1> <?php echo $es2; ?></h1>
-    <span><?php echo $span2; ?></span> <br><br>
+    <span><?php echo $span; ?></span> <br><br>
     <span>
         <?php
             if(strlen($name) > 3 && strpos($mail, ".") && strpos($mail, "@") && is_numeric($age)) {
@@ -72,7 +112,25 @@ Olimpia Milano - Cantù | 55-60 -->
             }
         ?>
     </span>
-    
+</div>
+
+<!-- Snack 3 -->
+<!-- Creare un array di array. Ogni array figlio avrà come chiave una data in questo formato: DD-MM-YYYY es 01-01-2007 e come valore un array di post associati a quella data. Stampare ogni data con i relativi post.
+Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
+<div>
+    <h1><?php echo $es3; ?></h1>
+    <span><?php echo $span; ?></span>
+    <h3>
+        <?php
+            $keys = array_keys($posts);
+            for($i=0; $i<count($keys); $i++) {
+                $key = $keys[$i];
+                $value = $posts[$key];
+
+                echo $key . ":" . $value . "<br>";
+            }
+        ?>
+    </h3>
 </div>
 
 </body>
