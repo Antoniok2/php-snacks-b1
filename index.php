@@ -21,7 +21,7 @@
 Olimpia Milano - Cantù | 55-60 -->
 <?php
     $es1 = "SNACK1";
-    $span1 = "Traccia esercizio";
+    $span1 = "Svolgimento esercizio";
     $matchs = [
         [
             'home' => 'Juventus',
@@ -36,10 +36,13 @@ Olimpia Milano - Cantù | 55-60 -->
             'pointsGuest' => '55'
         ]
     ];
+
     $es2 = "SNACK 2";
-    $name = $_GET("name");
-    $mail = $_GET("mail");
-    $age = $_GET("age");
+    $span2 = "Svolgimento esercizio";
+    $name = $_GET["name"];
+    $mail = $_GET["mail"];
+    $age = $_GET["age"];
+    
 ?>
 <div>
     <h1> <?php echo $es1; ?> </h1>
@@ -52,21 +55,24 @@ Olimpia Milano - Cantù | 55-60 -->
     ?>
 </div>
 
-<br><br><br><br>
 
 <!-- Snack 2 -->
 <!-- Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" -->
 
 
 <div>
-    <h1><?php echo $es2; ?></h1>
-    <?php
-        if(count($name) > 3 && strpos($mail, ".") && strpos($mail, "@") && is_numeric($age)) {
-            echo "Accesso al sito CONSENTITO";
-        } else {
-            echo "Accesso al sito NEGATO";
-        }
-    ?>
+    <h1> <?php echo $es2; ?></h1>
+    <span><?php echo $span2; ?></span> <br><br>
+    <span>
+        <?php
+            if(strlen($name) > 3 && strpos($mail, ".") && strpos($mail, "@") && is_numeric($age)) {
+                echo "Accesso al sito CONSENTITO";
+            } else {
+                echo "Accesso al sito NEGATO, dati non validi";
+            }
+        ?>
+    </span>
+    
 </div>
 
 </body>
