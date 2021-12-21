@@ -15,6 +15,13 @@
         text-align: center;
         margin-bottom: 20px
     }
+
+    .green {
+        background-color: green;
+    }
+    .grey {
+        background-color: grey;
+    }
 </style>
 
 <?php
@@ -85,6 +92,36 @@
 
     // ESERCIZIO 4
     $es4 = "SNACK 4";
+
+    // ESERCIZIO 5
+    $es5 = "SNACK 5 WITH FOR EACH";
+    $par = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur harum neque illo id officiis. tempora enim alias aliquam cum distinctio recusandae reprehenderit. quisquam assumenda! Aliquam ducimus in reiciendis repudiandae nam";
+
+    // ESERCIZIO 6 WITH FOR EACH
+    $es6 = "SNACK 6 WITH FOR EACH";
+    $db = [
+        'teachers' => [
+            [
+                'name' => 'Michele',
+                'lastname' => 'Papagni'
+            ],
+            [
+                'name' => 'Fabio',
+                'lastname' => 'Forghieri'
+            ]
+        ],
+        'pm' => [
+            [
+                'name' => 'Roberto',
+                'lastname' => 'Marazzini'
+            ],
+            [
+                'name' => 'Federico',
+                'lastname' => 'Pellegrini'
+            ]
+        ]
+    ];
+
     
 ?>
 
@@ -97,6 +134,8 @@ Olimpia Milano - Cantù | 55-60 -->
     <?php
         // var_dump($matchs);
         for($i=0;$i<count($matchs); $i++) {
+            // $mathc = $matchs[$i];
+
             echo $matchs[$i]["home"] . " - " . $matchs[$i]["guest"] . " | " . $matchs[$i]["pointsHome"] . " - " . $matchs[$i]["pointsGuest"] . "<br>";
         }
     ?>
@@ -110,7 +149,7 @@ Olimpia Milano - Cantù | 55-60 -->
     <span><?php echo $span; ?></span> <br><br>
     <span>
         <?php
-            if(strlen($name) > 3 && strpos($mail, ".") && strpos($mail, "@") && is_numeric($age)) {
+            if(strlen($name) > 3 && strpos($mail, ".") !== false && strpos($mail, "@") !== false && is_numeric($age)) {
                 echo "Accesso al sito CONSENTITO";
             } else {
                 echo "Accesso al sito NEGATO, dati non validi";
@@ -130,12 +169,15 @@ Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
             $keys = array_keys($posts);
             for($i=0; $i<count($keys); $i++) {
                 $key = $keys[$i];
+                echo $key . ":" . "<br>";
+
                 $postsByKey = $posts[$key];
                 // ciclo for su postsByKey
-                // $posts[$key][indice]['proprieta']
-                // $postsByKey[indice]['proprietà'];
+                for($y=0;$y<count($postsByKey); $y++){
+                    $post = $postsByKey[$y];
 
-                echo $key . ":" . $value . "<br>";
+                    echo $post["title"] . " : " . $post["text"] . " | " . $post["author"] . "<br>";
+                }
             }
         ?>
     </h3>
@@ -150,15 +192,59 @@ Qui l'array di esempio: https://www.codepile.net/pile/R2K5d68z -->
         <?php
             $arrNum = [];
             for($i=0;$i<15;$i++) {
-                $arrNum[] = rand(1,100);
+                $Num = rand(1,50);
+
+                if(!in_array($Num, $arrNum)) {
+                    $arrNum []= $Num;
+                }
             }
-            for($i=0;$i<count($arrNum);$i++){
-                echo "<li>" . $arrNum[$i] . "</li>";
+            for($y=0;$y<count($arrNum);$y++){
+                echo "<li>" . "numero " . $arrNum[$y] . "</li>";
             }
-            var_dump($arrNum);
         ?>
     </div>
 </div>
+
+<!-- SNACK 5 WITH FOR EACH-->
+<!-- Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi. Ogni punto un nuovo paragrafo. -->
+<div>
+    <h1><?php echo $es5; ?></h1>
+    <span><?php echo $span; ?></span>
+    <p>
+        <?php
+            $paragrafi = explode(".", $par);
+            // var_dump($paragrafo);
+            foreach ($paragrafi as $key => $paragrafo) {
+                echo "Paragrafo: " . $key . " - " . $paragrafo . ".<br>";
+            }
+        ?>
+    </p>
+
+</div>
+
+<!-- SNACK 6 WITH FOR EACH -->
+<!-- Utilizzare questo array: https://pastebin.com/CkX3680A. Stampiamo il nostro array mettendo gli insegnanti in un rettangolo grigio e i PM in un rettangolo verde. -->
+<div>
+    <h1><?php echo $es6; ?></h1>
+    <span><?php echo $span; ?></span><br><br>
+    <div class="grey">
+        <?php
+            $teachers = $db['teachers'];
+            foreach ($teachers as $teacher) {
+                echo $teacher['name'] . ' ' . $teacher['lastname'] . '<br>';
+            }
+        ?>
+    </div>
+    <div class="green">
+        <?php
+            $teachers = $db['teachers'];
+            foreach ($teachers as $teacher) {
+                echo $teacher['name'] . ' ' . $teacher['lastname'] . '<br>';
+            }
+        ?>
+    </div>
+</div>
+
 
 
 </body>
